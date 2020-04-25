@@ -78,3 +78,32 @@ resource "aws_instance" "example" {
 ```
 
 The square-bracket index notation used here is an example of how the map type expression is accessed as a variable, with [var.region] referencing the var.amis declaration for dynamic lookup.
+
+## Output Variables
+
+### Define output 
+
+```
+output "ip" {
+  value = aws_eip.ip.public_ip
+}
+```
+Note: Multiple output blocks can be defined to specify multiple output variables.
+
+### Viewing Outputs
+
+```
+$ terraform apply
+
+....
+Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+  ip = 50.17.232.209
+
+$ terraform output ip
+
+50.17.232.209
+
+```
